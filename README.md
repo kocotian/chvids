@@ -1,8 +1,11 @@
 # chvids
 POSIX sh script for listing, watching and downloading YouTube channels videos from terminal
+![printed help and selected first channel](1.png)
+![listed all channel videos](2.png)
+![started playing second video](3.png)
 
 ## installation
-```sh
+```
 $ git clone https://git.kocotian.pl/chvids
 # make install
 ```

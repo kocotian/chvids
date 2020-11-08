@@ -1,0 +1,49 @@
+.TH CHVIDS 1 chvids
+.SH NAME
+chvids \- get youtube channel videos
+.SH SYNOPSIS
+.B chvids
+.RB [CHANNEL_ID]
+.SH DESCRIPTION
+chvids is a simple POSIX shell script for playing and downloading youtube videos.
+.P
+Creation genesis is simple - inspired by watching youtube videos from rss in
+newsboat from command line. Unfortunately, you cannot see older videos, so
+this simple script gets all channel videos.
+.SH USAGE
+On program start, chvids will fetch all videos and after fetching,
+you will get interactive prompt where:
+.TP
+.B q
+quits program or current mode
+.TP
+.B l
+lists all videos
+.TP
+.B h
+displays help
+.TP
+.B p
+change to play mode
+.TP
+.B d
+change to download mode
+.SH MODES
+.TP
+.B play mode
+gets video number from user and plays selected video.
+.TP
+.B download mode
+gets video number from user and downloads selected video.
+.SH BUGS
+chvids uses invidious API (formatted on a server with OpenTube API),
+where channel "page" is 60 videos, so in channels with
+.B insane
+videos count, videos will load
+.B really looooong
+and some of videos would not load.
+.SH COPYRIGHT
+Program originally created by Kocotian and licensed under GPLv2. Check included LICENSE file
+.SH SEE ALSO
+.BR mpv (1),
+.BR youtube-dl (1)

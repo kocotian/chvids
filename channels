@@ -1,0 +1,43 @@
+#!/bin/sh
+URLS="$(grep "youtube\\.com/feeds" ~/.config/newsboat/urls)"
+CHANNELCOUNT="$(echo "$URLS" | wc -l)"
+
+help()
+{
+	echo "help:
+	h = this help
+	q = quit
+	l = list channels
+	s = select channel"
+}
+
+list()
+{
+	CHANNELS="got \033[1;33m$CHANNELCOUNT \033[0mchannels"; NUMBER=1
+	echo "$URLS" | while read LINE
+	do
+		CHANNELS="$CHANNELS\n\033[1;33m$NUMBER. \033[1;97m$(echo "${LINE##*	}" | sed "s/\ *\"~//g;s/\"$//g")"
+		[ "$NUMBER" = "$CHANNELCOUNT" ] && (echo "$CHANNELS" | less)
+		NUMBER=$(($NUMBER + 1))
+	done
+}
+
+select()
+{
+	echo -n "\033[1;34m:: \033[0mgive channel number (h for help) \033[1;34m>> \033[0m"
+	read CHNO
+	[ "$CHNO" = "q" ] && return
+	[ "$CHNO" = "l" ] && list && select && return
+	[ "$CHNO" = "h" ] && help && select && return
+	chvids $(echo "$URLS" | sed -n "s/^.*channel_id=//g;s/\\t.*$//g;${CHNO}p")
+}
+
+while true
+do
+	echo -n "\033[1;34m:: \033[0mwhat to do? (h for help) \033[1;34m>> \033[0m"
+	read WHAT
+	[ "$WHAT" = "q" ] && break
+	[ "$WHAT" = "h" ] && help
+	[ "$WHAT" = "l" ] && list
+	[ "$WHAT" = "s" ] && select
+done

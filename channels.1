@@ -1,0 +1,33 @@
+.TH CHANNELS 1 channels
+.SH NAME
+channels \- list youtube channels
+.SH SYNOPSIS
+.B chvids
+.SH DESCRIPTION
+channels is frontend for chvids that gets youtube channel id's from newsboat
+configuration file
+.SH USAGE
+On program start, channels will get all youtube urls from newsboat
+configuration file and parse it. URLs should be in format:
+
+.B https://www.youtube.com/feeds/videos.xml?channel_id=<channel id><Tab>"~<channel name>"
+
+.IT
+After loading and parsing URLs, you will get interactive prompt where:
+.TP
+.B q
+quits program or select-channel-mode
+.TP
+.B l
+lists all channel
+.TP
+.B h
+displays help
+.TP
+.B s
+select channel
+.SH COPYRIGHT
+Program originally created by Kocotian and licensed under GPLv2. Check included LICENSE file
+.SH SEE ALSO
+.BR newsboat (1),
+.BR chvids (1)

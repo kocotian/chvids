@@ -1,8 +1,14 @@
 # chvids
 POSIX sh script for listing, watching and downloading YouTube channels videos from terminal
+
 ![printed help and selected first channel](1.png)
+printed help and selected first channel
+
 ![listed all channel videos](2.png)
+listed all channel videos
+
 ![started playing second video](3.png)
+started playing second video
 
 ## installation
 ```
